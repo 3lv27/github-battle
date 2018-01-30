@@ -3,7 +3,7 @@ import queryString from 'query-string';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import api from '../utils/api'
+import { battle } from '../utils/api'
 
 import PlayerPreview from './PlayerPreview';
 import Loading from './Loading';
@@ -57,7 +57,8 @@ class Results extends Component {
 
     componentDidMount() {
         const { playerOneName, playerTwoName } = queryString.parse(this.props.location.search);
-        api.battle([
+        
+        battle([
             playerOneName,
             playerTwoName
         ]).then((results) => {

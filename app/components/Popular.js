@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import api from '../utils/api';
+import { fetchPopularRepos } from '../utils/api';
 
 import Loading from './Loading';
 
@@ -29,7 +29,7 @@ SelectLanguage.propTypes = {
 function RepoGrid({ repos }) {
     return (
         <ul className='popular-list'>
-            {props.repos.map(({ name, stargazers_count, owner, html_url }, index) => (
+            {repos.map(({ name, stargazers_count, owner, html_url }, index) => (
                     <li key={name} className='popular-item'>
                         <div className='popular-rank'>#{index + 1}</div>
                         <ul className='space-list-items'>
@@ -77,7 +77,7 @@ class Popular extends React.Component {
         repos: null
     }));
 
-      api.fetchPopularRepos(lang)
+    fetchPopularRepos(lang)
           .then((repos) => {
               this.setState(() => ({ repos }))
           });

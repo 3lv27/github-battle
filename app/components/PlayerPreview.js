@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
 
-function PlayerPreview({ avatar, username, children }) {
+export default function PlayerPreview({ avatar, username, children }) {
     return (
         <div>
             <div className="column">
@@ -23,5 +23,3 @@ PlayerPreview.propTypes = {
     username: PropTypes.string.isRequired,
 
 }
-
-export default PlayerPreview
